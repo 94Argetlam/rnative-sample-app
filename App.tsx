@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView } from 'react-native';
-import { Text } from 'native-base';
+import { Text, Input } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
+
+import { BaseLayout } from './src/common';
 
 export default function App() {
   useEffect(() => {
@@ -9,8 +10,8 @@ export default function App() {
   });
 
   return (
-    <SafeAreaView>
+    <BaseLayout>
       <Text>Hello World</Text>
-    </SafeAreaView>
+    </BaseLayout>
   );
 }
