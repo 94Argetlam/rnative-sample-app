@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {SafeAreaView} from 'react-native';
-import {Text} from 'native-base';
+import React, { useEffect } from 'react';
+import { SafeAreaView } from 'react-native';
+import { Text } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
 
 export default function App() {
