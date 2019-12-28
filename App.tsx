@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Text, Input } from 'native-base';
+import { Text } from 'native-base';
 import SplashScreen from 'react-native-splash-screen';
 
-import { BaseLayout } from './src/common';
+import { BaseLayout } from './src/common/components';
 
 export default function App() {
   useEffect(() => {

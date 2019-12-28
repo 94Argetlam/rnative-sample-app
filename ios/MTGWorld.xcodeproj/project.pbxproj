@@ -194,7 +194,6 @@
 				6A02894091B6C0413F883FE4 /* Pods-MTGWorldTests.debug.xcconfig */,
 				F696C6A82C64D6370064C0C3 /* Pods-MTGWorldTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +307,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

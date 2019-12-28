@@ -10,7 +10,6 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import org.devio.rn.splashscreen.SplashScreen;
 
 import java.util.List;
 
@@ -44,7 +43,6 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
-    SplashScreen.show(this);
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
   }
