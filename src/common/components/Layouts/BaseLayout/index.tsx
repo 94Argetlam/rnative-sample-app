@@ -15,7 +15,11 @@ export function BaseLayout({
     <SafeAreaView>
       <KeyboardAvoidingView style={styles.container}>
         <Container>
-          <Content scrollEnabled={scrollEnabled}>{children}</Content>
+          <Content
+            contentContainerStyle={styles.content}
+            scrollEnabled={scrollEnabled}>
+            {children}
+          </Content>
         </Container>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -24,4 +28,5 @@ export function BaseLayout({
 
 const styles = StyleSheet.create({
   container: { width: '100%', height: '100%' },
+  content: { alignItems: 'center', flex: 1 },
 });
