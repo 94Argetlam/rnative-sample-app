@@ -1,42 +1,49 @@
-import React, { useCallback } from 'react';
-import { StyleSheet } from 'react-native';
-import { View } from 'native-base';
-import FastImage from 'react-native-fast-image';
+import React, { useCallback, useMemo, useState } from 'react';
 
-import { BaseLayout } from '../../../common/components';
-
-import colorWheel from '../../../common/assets/images/color-wheel.png';
-import { GettingStartedTour } from './components/GettingStartedTour';
+import {
+  BaseLayout,
+  BaseLayoutContent,
+  ColorWheelImage,
+  Button,
+} from '../../../common/components';
+import {
+  GettingStartedTour,
+  GettingStartedTourRef,
+} from './components/GettingStartedTour';
 
 export function GettingStarted(props) {
+  const [gettingStartedTourRef, setGettingStartedTourRef] = useState<
+    GettingStartedTourRef
+  >({ actionLabel: '', nextAction: null });
+
+  const { actionLabel, nextAction } = useMemo(() => gettingStartedTourRef, [
+    gettingStartedTourRef,
+  ]);
+
   const handleSignUp = useCallback(
     () => props.navigation.navigate('SignUp'),
     [],
   );
 
+  const handleCancel = useCallback(
+    () => props.navigation.navigate('Landing'),
+    [],
+  );
+
   return (
-    <BaseLayout>
-      <FastImage
-        source={colorWheel}
-        resizeMode={FastImage.resizeMode.contain}
-        style={styles.image}
-      />
-      <View style={styles.content}>
-        <GettingStartedTour onDone={handleSignUp} />
-      </View>
+    <BaseLayout header={<ColorWheelImage />}>
+      <BaseLayoutContent
+        primaryButton={
+          <Button
+            label={actionLabel}
+            onPress={nextAction ? nextAction : handleSignUp}
+          />
+        }
+        secondaryButton={
+          <Button label="Cancel" bordered={true} onPress={handleCancel} />
+        }>
+        <GettingStartedTour ref={setGettingStartedTourRef} />
+      </BaseLayoutContent>
     </BaseLayout>
   );
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: 200,
-    height: 200,
-    marginVertical: '35%',
-  },
-  content: {
-    backgroundColor: '#efefef',
-    flex: 1,
-    width: '100%',
-  },
-});

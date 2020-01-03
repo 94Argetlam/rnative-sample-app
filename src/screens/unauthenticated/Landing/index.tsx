@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
-import { StyleSheet } from 'react-native';
-import { View } from 'native-base';
-import FastImage from 'react-native-fast-image';
+import { Text } from 'native-base';
 
-import { BaseLayout, Button } from '../../../common/components';
-
-import colorWheel from '../../../common/assets/images/color-wheel.png';
+import {
+  BaseLayout,
+  BaseLayoutContent,
+  Button,
+  ColorWheelImage,
+} from '../../../common/components';
 
 export function Landing(props) {
   const handleGettingStartedPress = useCallback(
@@ -19,39 +20,20 @@ export function Landing(props) {
   );
 
   return (
-    <BaseLayout>
-      <FastImage
-        source={colorWheel}
-        resizeMode={FastImage.resizeMode.contain}
-        style={styles.image}
-      />
-      <View style={styles.content}>
-        <View style={styles.buttonContainer}>
+    <BaseLayout header={<ColorWheelImage />}>
+      <BaseLayoutContent
+        primaryButton={
           <Button label="Getting Started" onPress={handleGettingStartedPress} />
-          <Button label="Sign In" bordered={true} />
-        </View>
-        <Button
-          label="You don't have an account? Sign up now."
-          transparent={true}
-          onPress={handleSignUp}
-        />
-      </View>
+        }
+        secondaryButton={<Button label="Sign In" bordered={true} />}
+        moreInfoButton={
+          <Button
+            label="You don't have an account? Sign up now."
+            transparent={true}
+            onPress={handleSignUp}
+          />
+        }
+      />
     </BaseLayout>
   );
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: 200,
-    height: 200,
-    marginVertical: '35%',
-  },
-  content: {
-    alignItems: 'center',
-    backgroundColor: '#efefef',
-    justifyContent: 'space-around',
-    flex: 1,
-    width: '100%',
-  },
-  buttonContainer: { justifyContent: 'center', flex: 1 },
-});
